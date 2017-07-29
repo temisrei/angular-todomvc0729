@@ -6,6 +6,7 @@
       [placeholder]="inputHint"
       [attr.data-myhint]="inputHint"
       (keyup.enter)="addTodo($event)"
+      [(ngModel)]="todo"
       autofocus>
   </header>
   <!-- This section should be hidden by default and shown when there are todos -->
