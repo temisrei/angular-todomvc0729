@@ -11,6 +11,8 @@ export class AppComponent {
 
   addTodo(event) {
     // console.log(event);
-    this.todos.push(event.target.value);
+    if (event.target.value) {
+      this.todos.push(event.target.value);
+    }
   }
 }
