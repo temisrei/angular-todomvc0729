@@ -24,7 +24,9 @@
         <div class="view">
           <input class="toggle" type="checkbox" [(ngModel)]="item.done">
           <label [ngStyle]="{'color': item.done ? 'green' : 'red' }">{{item.text | uppercase}}</label>
-          <button class="destroy"></button>
+          <button
+            (click)="removeTodo(item)"
+            class="destroy"></button>
         </div>
         <input class="edit" value="Create a TodoMVC template">
       </li>
