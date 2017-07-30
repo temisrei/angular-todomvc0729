@@ -20,16 +20,16 @@ export class FooterComponent implements OnInit {
     return this._todos;
   }
 
-  @Output() clearComplete = new EventEmitter();
-
+  // @Output() clearComplete = new EventEmitter();
+  @Output() onClearBtnClick = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  doClear() {
-    this.clearComplete.emit();
-  }
+  // doClear() {
+  //   this.clearComplete.emit();
+  // }
 
 }
