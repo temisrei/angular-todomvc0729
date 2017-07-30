@@ -6,7 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  @Input() todos: any[] = [];
+  // tslint:disable-next-line:no-input-rename
+  @Input('data') todos: any[] = [];
 
   constructor() { }
 
