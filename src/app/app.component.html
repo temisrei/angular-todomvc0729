@@ -16,10 +16,10 @@
     <ul
       *ngFor="let item of todos"
       class="todo-list">
-      <li> <!-- class="completed" -->
+      <li [class.completed]="item.done">
         <div class="view">
-          <input class="toggle" type="checkbox" checked>
-          <label>{{item}}</label>
+          <input class="toggle" type="checkbox" [(ngModel)]="item.done">
+          <label>{{item.text}}</label>
           <button class="destroy"></button>
         </div>
         <input class="edit" value="Create a TodoMVC template">
