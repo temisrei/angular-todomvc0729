@@ -6,12 +6,14 @@ import { TitleComponent } from './title/title.component';
 
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TitleComponent,
-    FooterComponent
+    FooterComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
