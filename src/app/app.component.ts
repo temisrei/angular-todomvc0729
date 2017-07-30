@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +14,13 @@ export class AppComponent implements OnInit {
   isToggleAll: boolean = false;
   private apiUrl = 'http://localhost:3000/todos';
 
-  constructor(private http: Http) {
-  }
+  constructor(private dataSvc: DataService) { }
 
   ngOnInit() {
-    this.http.get(this.apiUrl)
-      .subscribe(res => {this.todos = res.json(); });
+    this.dataSvc.getTodos()
+      .subscribe(data => {
+        this.todos = data;
+      });
   }
 
   addTodo() {
@@ -29,9 +30,9 @@ export class AppComponent implements OnInit {
         done: false
       };
 
-      this.http.post(this.apiUrl, newTodo)
-        .subscribe(res => {
-          let data = res.json();
+      // this.http.post(this.apiUrl, newTodo)
+      this.dataSvc.addTodo(newTodo)
+        .subscribe(data => {
           this.todos = [...this.todos];
           this.todos.push(newTodo);
           this.todo = '';
@@ -57,20 +58,20 @@ export class AppComponent implements OnInit {
     });
 
     this.todos.forEach(item => {
-      this.http.put(`${this.apiUrl}/${item.id}`, item)
+      this.dataSvc.updateTodo(item)
         .subscribe();
     });
   }
 
   removeTodo(todo) {
-    this.http.delete(`${this.apiUrl}/${todo.id}`)
-      .subscribe(res => {
-        this.todos = this.todos.filter(item => item !== todo);
+    this.dataSvc.removeTodo(todo)
+      .subscribe(data => {
+        this.todos = this.todos.filter(item => item.id !== todo.id);
       });
   }
 
   todoUpdate(todo) {
-    this.http.put(`${this.apiUrl}/${todo.id}`, todo)
+    this.dataSvc.updateTodo(todo)
       .subscribe();
   }
 
