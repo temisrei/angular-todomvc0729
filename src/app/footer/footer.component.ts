@@ -8,6 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class FooterComponent implements OnInit {
   // tslint:disable-next-line
   tooMore: boolean = false;
+  // tslint:disable-next-line
+  filterType: string = 'All';
 
   private _todos: any[] = [];
   // tslint:disable-next-line:no-input-rename
@@ -28,8 +30,9 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
   }
 
-  // doClear() {
-  //   this.clearComplete.emit();
-  // }
+  changeFilterType(value) {
+    console.log(value);
+    this.filterType = value;
+  }
 
 }
