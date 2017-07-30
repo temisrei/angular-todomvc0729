@@ -10,6 +10,7 @@ export class AppComponent {
   todos: any[] = [];
   todo: string;
   filterType: string;
+  isToggleAll: boolean = false;
 
   addTodo() {
     if (this.todo) {
@@ -28,6 +29,13 @@ export class AppComponent {
 
   filterData(event) {
     this.filterType = event;
+  }
+
+  toggleAll(event) {
+    this.todos = this.todos.map(item => {
+      item.done = event;
+      return item;
+    });
   }
 
 }
