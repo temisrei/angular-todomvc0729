@@ -22,7 +22,11 @@
       class="todo-list">
       <li [class.completed]="item.done">
         <div class="view">
-          <input class="toggle" type="checkbox" [(ngModel)]="item.done">
+          <input
+            class="toggle"
+            type="checkbox"
+            [(ngModel)]="item.done"
+            (ngModelChange)="todoUpdate(item)">
           <label [ngStyle]="{'color': item.done ? 'green' : 'red' }">{{item.text | uppercase}}</label>
           <button
             (click)="removeTodo(item)"
