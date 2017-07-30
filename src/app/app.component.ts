@@ -21,4 +21,8 @@ export class AppComponent {
     }
   }
 
+  clearComplete() {
+    this.todos = this.todos.filter(item => !item.done);
+  }
+
 }
