@@ -22,8 +22,8 @@ export class FooterComponent implements OnInit {
     return this._todos;
   }
 
-  // @Output() clearComplete = new EventEmitter();
   @Output() onClearBtnClick = new EventEmitter();
+  @Output() filterTypeChanged = new EventEmitter();
 
   constructor() { }
 
@@ -31,8 +31,8 @@ export class FooterComponent implements OnInit {
   }
 
   changeFilterType(value) {
-    console.log(value);
     this.filterType = value;
+    this.filterTypeChanged.emit(value);
   }
 
 }

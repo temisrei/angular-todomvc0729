@@ -9,6 +9,7 @@ export class AppComponent {
   inputHint = 'What needs to be done?';
   todos: any[] = [];
   todo: string;
+  filterType: string;
 
   addTodo() {
     if (this.todo) {
@@ -23,6 +24,10 @@ export class AppComponent {
 
   clearComplete() {
     this.todos = this.todos.filter(item => !item.done);
+  }
+
+  filterData(event) {
+    this.filterType = event;
   }
 
 }

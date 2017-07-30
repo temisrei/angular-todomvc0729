@@ -14,7 +14,7 @@
     <input class="toggle-all" type="checkbox">
     <label for="toggle-all">Mark all as complete</label>
     <ul
-      *ngFor="let item of todos"
+      *ngFor="let item of todos | filter: filterType"
       class="todo-list">
       <li [class.completed]="item.done">
         <div class="view">
@@ -30,7 +30,8 @@
   <app-footer
     [data]="todos"
     *ngIf="todos.length > 0"
-    (onClearBtnClick)="clearComplete()">
+    (onClearBtnClick)="clearComplete()"
+    (filterTypeChanged)="filterData($event)">
   </app-footer>
 </section>
 <footer
