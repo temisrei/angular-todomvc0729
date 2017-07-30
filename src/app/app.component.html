@@ -29,11 +29,11 @@
   <!-- This footer should hidden by default and shown when there are todos -->
   <app-footer
     [data]="todos"
+    *ngIf="todos.length > 0"
     (onClearBtnClick)="clearComplete()">
   </app-footer>
 </section>
 <footer
-  *ngIf="todos.length > 0"
   class="info">
   <p>Double-click to edit a todo</p>
   <!-- Remove the below line ↓ -->
