@@ -20,8 +20,12 @@
     <ul
       *ngFor="let item of todos | filter: filterType"
       class="todo-list">
-      <li [class.completed]="item.done">
-        <div class="view">
+      <li
+        [class.editing]="item.isEditMode"
+        [class.completed]="item.done">
+        <div
+          (dblclick)="enterEditMode(item)"
+          class="view">
           <input
             class="toggle"
             type="checkbox"
@@ -32,7 +36,12 @@
             (click)="removeTodo(item)"
             class="destroy"></button>
         </div>
-        <input class="edit" value="Create a TodoMVC template">
+        <input
+          [(ngModel)]="item.editText"
+          (ngModelChange)="todoUpdate(item)"
+          (keyup.enter)="confirmEdit(item)"
+          (keyup.escape)="leaveEditMode(item)"
+          class="edit">
       </li>
     </ul>
   </section>
